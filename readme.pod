@@ -6,7 +6,7 @@ sandbox - a scratch repo for trying things out without wrecking anything real
 
 =head1 SYNOPSIS
 
-    git clone https://github.com/yourname/sandbox.git
+    git clone https://github.com/thisisnotanorga/sandbox.git
     cd sandbox
     ./setup.sh
     ./run.sh --demo
@@ -42,7 +42,7 @@ up into something serious.
 
 =item 1. Clone the repo
 
-    git clone https://github.com/yourname/sandbox.git
+    git clone https://github.com/thisisnotanorga/sandbox.git
 
 =item 2. Enter the directory
 

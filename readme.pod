@@ -1,0 +1,157 @@
+=encoding utf8
+
+=head1 NAME
+
+sandbox - a scratch repo for trying things out without wrecking anything real
+
+=head1 SYNOPSIS
+
+    git clone https://github.com/yourname/sandbox.git
+    cd sandbox
+    ./setup.sh
+    ./run.sh --demo
+
+=head1 DESCRIPTION
+
+C<sandbox> is exactly what it sounds like: a low-stakes playground repo.
+It exists so you can try out ideas, break things on purpose, test snippets,
+and prototype features without any of it touching a production codebase.
+
+Nothing in here is meant to be stable. Treat every branch as disposable.
+If something in C<sandbox> turns out to be useful, the expectation is that
+it gets promoted into its own proper repo later, not that this one grows
+up into something serious.
+
+=head1 INSTALLATION
+
+=head2 Requirements
+
+=over 4
+
+=item * Bash >= 4.0
+
+=item * Git >= 2.30
+
+=item * Whatever runtime the specific experiment you're running needs (see F<experiments/*/README>)
+
+=back
+
+=head2 Steps
+
+=over 4
+
+=item 1. Clone the repo
+
+    git clone https://github.com/yourname/sandbox.git
+
+=item 2. Enter the directory
+
+    cd sandbox
+
+=item 3. Run the setup script
+
+    ./setup.sh
+
+This installs local hooks, creates a C<.sandbox/> scratch directory
+(git-ignored), and checks for required tools.
+
+=back
+
+=head1 USAGE
+
+=head2 Basic commands
+
+    ./run.sh --demo        # run the default demo experiment
+    ./run.sh --list        # list all available experiments
+    ./run.sh <name>        # run a specific experiment by name
+    ./clean.sh             # wipe the .sandbox/ scratch directory
+
+=head2 Creating a new experiment
+
+    ./new.sh my-idea
+
+This scaffolds a new folder under F<experiments/my-idea/> with a minimal
+README, an entry script, and an ignore file so scratch output doesn't get
+committed by accident.
+
+=head2 Folder layout
+
+    sandbox/
+    |-- experiments/
+    |   |-- my-idea/
+    |   |   |-- README.pod
+    |   |   `-- run.sh
+    |   `-- ...
+    |-- lib/          # shared helpers, kept intentionally tiny
+    |-- setup.sh
+    |-- run.sh
+    |-- clean.sh
+    `-- new.sh
+
+=head1 CONVENTIONS
+
+=over 4
+
+=item * Every experiment lives in its own folder under F<experiments/>.
+
+=item * Every experiment folder gets a short README explaining what it's testing and why.
+
+=item * Nothing here depends on anything else here. Experiments should not import from other experiments.
+
+=item * Dead experiments get deleted, not commented out. Git history remembers them.
+
+=back
+
+=head1 WHAT DOESN'T BELONG HERE
+
+=over 4
+
+=item * Anything with real user data
+
+=item * Anything that needs to run in production
+
+=item * Long-term projects that have outgrown "quick test" status (spin those out into their own repo)
+
+=back
+
+=head1 CONTRIBUTING
+
+This is a personal/team scratch space, not a public library, so there's no
+formal contribution process. If you're on the team:
+
+=over 4
+
+=item 1. Make a branch, not a mess on main
+
+=item 2. Keep experiments self-contained
+
+=item 3. Delete what you're done with
+
+=back
+
+=head1 EXAMPLES
+
+=head2 Example: quick script test
+
+    ./new.sh retry-logic
+    cd experiments/retry-logic
+    $EDITOR run.sh
+    ./run.sh
+
+=head2 Example: listing what's currently in the sandbox
+
+    $ ./run.sh --list
+    Available experiments:
+      - retry-logic
+      - websocket-poc
+      - cache-eviction-test
+
+=head1 LICENSE
+
+Unlicensed scratch space. Do whatever you want with it, no warranty implied.
+
+=head1 AUTHOR
+
+Maintained by whoever needs it this week.
+
+=cut

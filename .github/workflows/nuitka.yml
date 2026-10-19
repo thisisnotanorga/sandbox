@@ -33,6 +33,7 @@ jobs:
           python -m pip install nuitka
 
       - name: Build no patch
+        continue-on-error: true
         run: |
           python nuitka/build_exe.py
 

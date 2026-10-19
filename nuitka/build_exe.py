@@ -1,13 +1,11 @@
 import platform
 import subprocess
 import sys
-import tomllib
 from pathlib import Path
 import zipfile
 
-project = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))["project"]
-name    = project["name"]
-version = project["version"]
+name    = "nuitka-issue"
+version = "0.1.0"
 
 arch = platform.machine().lower()
 if arch == "amd64": arch = "x86_64"

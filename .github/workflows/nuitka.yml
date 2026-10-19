@@ -80,3 +80,11 @@ jobs:
           name: bang-linux-x64
           path: build/*.zip
           if-no-files-found: error
+
+      - name: Upload crash report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuitka-crash-report
+          path: nuitka-crash-report.xml
+          if-no-files-found: ignore

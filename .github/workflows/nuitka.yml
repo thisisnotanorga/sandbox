@@ -32,6 +32,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install nuitka
 
+      - name: Nuitka version
+        run: |
+          python -m nuitka --version
+
       - name: Build no patch
         continue-on-error: true
         run: |

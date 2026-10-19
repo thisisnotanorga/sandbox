@@ -28,7 +28,7 @@ cmd = [
     f"--product-version={version}",
     f"--onefile-tempdir-spec={{CACHE_DIR}}/{name}/{{VERSION}}",
     "--assume-yes-for-downloads",
-    "--deployment",
+    # "--deployment",
     "nuitka/hello.py",
 ]
 
